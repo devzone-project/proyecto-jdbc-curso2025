@@ -1,8 +1,9 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.devzone.proyectodevzonejdbc;
+
+import com.devzone.proyectodevzonejdbc.frontend.MenuPrincipal;
 
 /**
  *
@@ -10,7 +11,11 @@ package com.devzone.proyectodevzonejdbc;
  */
 public class ProyectoDevZoneJDBC {
 
+    //Metodo que se encarga de inicializar la aplicacion
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+
+        menuPrincipal.setVisible(true);
     }
 }
