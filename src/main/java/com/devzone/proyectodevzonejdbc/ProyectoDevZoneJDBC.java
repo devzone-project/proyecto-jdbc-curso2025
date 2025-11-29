@@ -16,6 +16,6 @@ public class ProyectoDevZoneJDBC {
 
         MenuPrincipal menuPrincipal = new MenuPrincipal();
 
-        menuPrincipal.setVisible(true);
+        menuPrincipal.setVisible(true);        
     }
 }
