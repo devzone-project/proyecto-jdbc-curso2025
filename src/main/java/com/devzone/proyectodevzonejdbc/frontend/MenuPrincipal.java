@@ -4,12 +4,26 @@
  */
 package com.devzone.proyectodevzonejdbc.frontend;
 
+import com.devzone.proyectodevzonejdbc.connectiondb.ConectorDB;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author pablo03
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     
+    
+    //===========================APARTADO DE VARIABLES GLOBALES=======================================
+     //Variable global que controlara todos los JinternalFrames
+    private JInternalFrame frameInterno;
+    
+    //Referencia que se mantendra viva todo el tiempo que sea necesario para pdoer usarla
+    private ConectorDB conexionManagger;
+    
+    
+    //Variable que permite saber que menu de operaciones se despliegara
+    private int gestionVentanas;
 
     /**
      * Creates new form MenuPrincipal
@@ -52,10 +66,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInscripcion1 = new javax.swing.JButton();
         btnInscripcion2 = new javax.swing.JButton();
         panelContenedor = new javax.swing.JPanel();
+        desktopPane = new javax.swing.JDesktopPane();
+        lblMiddle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelBarraPrincipal.setBackground(new java.awt.Color(50, 56, 68));
+        panelBarraPrincipal.setBackground(new java.awt.Color(38, 52, 35));
         panelBarraPrincipal.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
 
         lblHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -86,7 +102,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(lblEleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblElecccionEVT, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 419, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblHome)
                 .addGap(18, 18, 18))
         );
@@ -109,11 +125,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        barraLateral.setBackground(new java.awt.Color(50, 56, 68));
+        barraLateral.setBackground(new java.awt.Color(38, 52, 35));
         barraLateral.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         barraLateral.setForeground(new java.awt.Color(0, 0, 0));
 
-        btnRegistros.setBackground(new java.awt.Color(50, 56, 68));
+        btnRegistros.setBackground(new java.awt.Color(38, 52, 35));
         btnRegistros.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnRegistros.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistros.setText("Registro de datos");
@@ -121,7 +137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistros.setFocusable(false);
         btnRegistros.addActionListener(this::btnRegistrosActionPerformed);
 
-        btnReportes.setBackground(new java.awt.Color(50, 56, 68));
+        btnReportes.setBackground(new java.awt.Color(38, 52, 35));
         btnReportes.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnReportes.setForeground(new java.awt.Color(255, 255, 255));
         btnReportes.setText("Reportes");
@@ -132,7 +148,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelRegistros.setBackground(new java.awt.Color(68, 84, 112));
         panelRegistros.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
 
-        btnRegistro1.setBackground(new java.awt.Color(99, 119, 134));
+        btnRegistro1.setBackground(new java.awt.Color(106, 134, 99));
         btnRegistro1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnRegistro1.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistro1.setText("Registrar Lineas de Produccion");
@@ -140,7 +156,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistro1.setFocusable(false);
         btnRegistro1.addActionListener(this::btnRegistro1ActionPerformed);
 
-        btnRegistro2.setBackground(new java.awt.Color(99, 119, 134));
+        btnRegistro2.setBackground(new java.awt.Color(106, 134, 99));
         btnRegistro2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnRegistro2.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistro2.setText("Registrar Productos");
@@ -148,7 +164,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnRegistro2.setFocusable(false);
         btnRegistro2.addActionListener(this::btnRegistro2ActionPerformed);
 
-        btnRegistro3.setBackground(new java.awt.Color(99, 119, 134));
+        btnRegistro3.setBackground(new java.awt.Color(106, 134, 99));
         btnRegistro3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnRegistro3.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistro3.setText("Registrar Clientes");
@@ -174,7 +190,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(btnRegistro3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnInscripciones.setBackground(new java.awt.Color(50, 56, 68));
+        btnInscripciones.setBackground(new java.awt.Color(38, 52, 35));
         btnInscripciones.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnInscripciones.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripciones.setText("Gestion de ventas");
@@ -185,7 +201,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelReportes.setBackground(new java.awt.Color(68, 84, 112));
         panelReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
 
-        btnReportes1.setBackground(new java.awt.Color(99, 119, 134));
+        btnReportes1.setBackground(new java.awt.Color(106, 134, 99));
         btnReportes1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnReportes1.setForeground(new java.awt.Color(255, 255, 255));
         btnReportes1.setText("Ganancias de productos");
@@ -193,7 +209,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnReportes1.setFocusable(false);
         btnReportes1.addActionListener(this::btnReportes1ActionPerformed);
 
-        btnReportes2.setBackground(new java.awt.Color(99, 119, 134));
+        btnReportes2.setBackground(new java.awt.Color(106, 134, 99));
         btnReportes2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnReportes2.setForeground(new java.awt.Color(255, 255, 255));
         btnReportes2.setText("Ventas a Clientes");
@@ -201,7 +217,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnReportes2.setFocusable(false);
         btnReportes2.addActionListener(this::btnReportes2ActionPerformed);
 
-        btnReportes3.setBackground(new java.awt.Color(99, 119, 134));
+        btnReportes3.setBackground(new java.awt.Color(106, 134, 99));
         btnReportes3.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnReportes3.setForeground(new java.awt.Color(255, 255, 255));
         btnReportes3.setText("Solicitudes de ventas");
@@ -230,7 +246,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelInscripciones.setBackground(new java.awt.Color(68, 84, 112));
         panelInscripciones.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 255)));
 
-        btnInscripcion1.setBackground(new java.awt.Color(99, 119, 134));
+        btnInscripcion1.setBackground(new java.awt.Color(106, 134, 99));
         btnInscripcion1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnInscripcion1.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripcion1.setText("Generar venta");
@@ -238,7 +254,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btnInscripcion1.setFocusable(false);
         btnInscripcion1.addActionListener(this::btnInscripcion1ActionPerformed);
 
-        btnInscripcion2.setBackground(new java.awt.Color(99, 119, 134));
+        btnInscripcion2.setBackground(new java.awt.Color(106, 134, 99));
         btnInscripcion2.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         btnInscripcion2.setForeground(new java.awt.Color(255, 255, 255));
         btnInscripcion2.setText("Validar Venta");
@@ -286,21 +302,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelContenedor.setBackground(new java.awt.Color(243, 203, 164));
+        panelContenedor.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout panelContenedorLayout = new javax.swing.GroupLayout(panelContenedor);
-        panelContenedor.setLayout(panelContenedorLayout);
-        panelContenedorLayout.setHorizontalGroup(
-            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        desktopPane.setBackground(new java.awt.Color(243, 203, 164));
+        desktopPane.setFocusable(false);
+
+        desktopPane.setLayer(lblMiddle, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(lblMiddle, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(338, Short.MAX_VALUE))
         );
-        panelContenedorLayout.setVerticalGroup(
-            panelContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
+                .addGap(241, 241, 241)
+                .addComponent(lblMiddle, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
+
+        panelContenedor.add(desktopPane, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout pantallaPrincipalLayout = new javax.swing.GroupLayout(pantallaPrincipal);
         pantallaPrincipal.setLayout(pantallaPrincipalLayout);
@@ -401,10 +431,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnReportes1;
     private javax.swing.JButton btnReportes2;
     private javax.swing.JButton btnReportes3;
+    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel lblAdmin;
     private javax.swing.JLabel lblElecccionEVT;
     private javax.swing.JLabel lblEleccion;
     private javax.swing.JLabel lblHome;
+    private javax.swing.JLabel lblMiddle;
     private javax.swing.JLabel lblPerfil;
     private javax.swing.JPanel panelBarraPrincipal;
     private javax.swing.JPanel panelContenedor;
